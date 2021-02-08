@@ -1,0 +1,22 @@
+nav {
+    height: 60px;
+    background-color: #03fcc6;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+nav .nav-item {
+    display: block;
+    width: 100px;
+    padding: 10px;
+    font-size: xx-large;
+    color: black;
+    text-decoration: none;
+    border-right: 1px solid white;
+}
+
+nav .nav-item:hover {
+    background-color: #84ffe4;
+    color: darkgrey;
+}
