@@ -1,8 +1,21 @@
-body {
+* {
+    font-family: monospace;
+}
+
+body, html {
     margin: 0px;
+    height: 100%;
 }
 
 main {
+    margin: 5px;
+    height: calc(100% - 60px - 10px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
     margin: 5px;
 }
 
@@ -29,20 +42,33 @@ nav .nav-item:hover {
     color: darkgrey;
 }
 
+.title {
+    margin-left: 10px;
+}
+
 .drawing {
     display: flex;
     align-items: stretch;
-    margin: 0px 10px;
-    height: 500px;
+    margin: 10px;
+    margin-top: 0px;
+    flex-grow: 1;
 }
 
 .canvas {
-    border: 1px solid black;
-    flex-grow: 0;
-    width: 60%
+    border : 2px solid rgb(75, 74, 74);
+    border-right: none;
+    width: 80%
 }
 
 .toolbar {
-    border: 1px solid black;
+    border: 2px solid black;
     flex-grow: 1;
+}
+
+.image-container {
+    display: "flex";
+}
+
+img {
+    width: 48%;
 }
