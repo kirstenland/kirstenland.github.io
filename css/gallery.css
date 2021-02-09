@@ -33,14 +33,14 @@ body, html {
 main {
   box-sizing: border-box;
   padding: 5px;
-  height: calc(100% - 60px);
-  overflow: auto;
+  height: calc(100% - 60px - 10px);
   display: flex;
   flex-direction: column;
 }
 
 h1 {
-  margin: 5px;
+  margin: 0px;
+  padding: 5px;
 }
 
 /*# sourceMappingURL=gallery.css.map */

@@ -33,37 +33,22 @@ body, html {
 main {
   box-sizing: border-box;
   padding: 5px;
-  height: calc(100% - 60px);
-  overflow: auto;
+  height: calc(100% - 60px - 10px);
   display: flex;
   flex-direction: column;
 }
 
 h1 {
-  margin: 5px;
+  margin: 0px;
+  padding: 5px;
 }
 
-.title {
-  margin-left: 10px;
+.image-container {
+  display: "flex";
 }
 
-.drawing {
-  display: flex;
-  align-items: stretch;
-  margin: 10px;
-  margin-top: 0px;
-  flex-grow: 1;
+img {
+  width: 48%;
 }
 
-.canvas {
-  border: 2px solid #4b4a4a;
-  border-right: none;
-  width: 80%;
-}
-
-.toolbar {
-  border: 2px solid black;
-  flex-grow: 1;
-}
-
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=about.css.map */

@@ -12,12 +12,12 @@ body, html {
 main {
     box-sizing: border-box;
     padding: 5px;
-    height: calc(100% - #{navbar.$navbar-height});
-    overflow: auto;
+    height: calc(100% - #{navbar.$navbar-height} - 10px);
     display: flex;
     flex-direction: column;
 }
 
 h1 {
-    margin: 5px;
+    margin: 0px;
+    padding: 5px;
 }
