@@ -1,0 +1,23 @@
+@use 'navbar';
+
+* {
+    font-family: monospace;
+}
+
+body, html {
+    margin: 0px;
+    height: 100%;
+}
+
+main {
+    box-sizing: border-box;
+    padding: 5px;
+    height: calc(100% - #{navbar.$navbar-height});
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 5px;
+}

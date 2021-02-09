@@ -1,0 +1,26 @@
+$navbar-background-color: #03fcc6;
+$navbar-font-color: black;
+$navbar-height: 60px;
+
+nav {
+    height: $navbar-height;
+    background-color: $navbar-background-color;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+nav .nav-item {
+    display: block;
+    width: 100px;
+    padding: 10px;
+    font-size: xx-large;
+    color: $navbar-font-color;
+    text-decoration: none;
+    border-right: 1px solid white;
+}
+
+nav .nav-item:hover {
+    background-color: lighten($navbar-background-color, 30%);
+    color: lighten($navbar-font-color, 50%);
+}
