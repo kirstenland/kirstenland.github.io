@@ -25,15 +25,9 @@ nav .nav-item:hover {
   font-family: monospace;
 }
 
-body, html {
-  margin: 0px;
-  height: 100%;
-}
-
 main {
   box-sizing: border-box;
   padding: 5px;
-  height: calc(100% - 60px - 10px);
   display: flex;
   flex-direction: column;
 }
@@ -63,6 +57,21 @@ h1 {
 
 .toolbar {
   border: 2px solid black;
+  flex-grow: 1;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
   flex-grow: 1;
 }
 

@@ -25,15 +25,9 @@ nav .nav-item:hover {
   font-family: monospace;
 }
 
-body, html {
-  margin: 0px;
-  height: 100%;
-}
-
 main {
   box-sizing: border-box;
   padding: 5px;
-  height: calc(100% - 60px - 10px);
   display: flex;
   flex-direction: column;
 }
