@@ -2,7 +2,6 @@ class Pen {
     constructor(fullCanvas, tempCanvas) {
         this.fullCanvas = new Canvas(fullCanvas);
         this.tempCanvas = new Canvas(tempCanvas);
-        this.fullCanvas.setStrokeWidth(2);
         this.down = false;
         this.x = 0;
         this.y = 0;
@@ -16,6 +15,7 @@ class Pen {
     penUp() {
         this.down = false;
         this.tempCanvas.clear();
+        this.fullCanvas.setStrokeWidth(2);
         this.fullCanvas.drawSpline(this.points, 0.2);
     }
     draw(newX, newY) {

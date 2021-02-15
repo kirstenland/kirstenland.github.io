@@ -1,11 +1,23 @@
+function loadColours(pen) {
+    const colours = ["#000000", "#ff0000", "#00ff00", "#0000ff"];
+    const colourPalette = document.querySelector('.colour-palette');
+    colours.forEach((colour) => {
+        const circle = document.createElement('span');
+        circle.classList.add("dot");
+        circle.style.backgroundColor = colour;
+
+        circle.addEventListener('click', () => {
+            pen.setColour(colour)
+            circle.classList.add("selected");
+        });
+        colourPalette.appendChild(circle);
+    });
+}
+
 window.onload = function() {
     const canvasHolder = document.querySelector('.canvas-holder');
     const fullCanvas = document.querySelector('.canvas.full');
     const tempCanvas = document.querySelector('.canvas.temp');
-    [fullCanvas, tempCanvas].forEach(canvas => {
-        canvas.setAttribute('height', canvasHolder.clientHeight - 4);
-        canvas.setAttribute('width', canvasHolder.clientWidth - 4);
-    });
     const pen = new Pen(fullCanvas, tempCanvas);
 
     canvasHolder.addEventListener('mousemove', function(e) {
@@ -35,6 +47,13 @@ window.onload = function() {
         const [x, y] = relativeCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
         e.preventDefault();
         pen.draw(x, y);
+    });
+
+    colourPalette = new ColourPalette(pen);
+
+    [fullCanvas, tempCanvas].forEach(canvas => {
+        canvas.setAttribute('height', canvasHolder.clientHeight - 4);
+        canvas.setAttribute('width', canvasHolder.clientWidth - 4);
     });
 
     function relativeCoords(x, y) {
