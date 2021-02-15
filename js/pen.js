@@ -30,4 +30,11 @@ class Pen {
         this.fullCanvas.setColour(colour);
         this.tempCanvas.setColour(colour);
     }
+    save() {
+        localStorage.setItem('lastImage', this.fullCanvas.getDataUrl());
+    }
+    clear() {
+        this.fullCanvas.clear();
+        this.tempCanvas.clear();
+    }
 }

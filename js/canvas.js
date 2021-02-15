@@ -65,4 +65,8 @@ class Canvas {
     setColour(colour) {
         this.context.strokeStyle = colour;
     }
+
+    getDataUrl() {
+        return this.canvas.toDataURL("image/png");
+    }
 }

@@ -58,3 +58,36 @@ main {
 .dot.selected {
     border: 2px solid grey;
 }
+
+.toolbar-heading {
+    text-align: center;
+}
+
+.toolbar-subheading {
+    padding-left: 5px;
+    margin: 0;
+}
+
+#save-drawing {
+    margin: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    outline: none;
+    border-radius: 4px;
+}
+
+#save-drawing:active {
+    border: 1px solid black;
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+}

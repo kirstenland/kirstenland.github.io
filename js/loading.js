@@ -56,6 +56,11 @@ window.onload = function() {
         canvas.setAttribute('width', canvasHolder.clientWidth - 4);
     });
 
+    document.getElementById('save-drawing').onclick = () => {
+        pen.save();
+        document.location.replace('./gallery.html')
+    }
+
     function relativeCoords(x, y) {
         return [x - canvasHolder.offsetLeft, y - canvasHolder.offsetTop]
     }

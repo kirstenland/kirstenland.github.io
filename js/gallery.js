@@ -1,0 +1,1 @@
+document.getElementById('image-holder').innerHTML = "<img src='" + localStorage.getItem('lastImage') + "'>";
