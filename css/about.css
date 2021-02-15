@@ -37,6 +37,10 @@ h1 {
   padding: 5px;
 }
 
+body {
+  margin: 0;
+}
+
 .image-container {
   display: "flex";
 }
