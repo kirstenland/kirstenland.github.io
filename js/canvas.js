@@ -69,4 +69,20 @@ class Canvas {
     getDataUrl() {
         return this.canvas.toDataURL("image/png");
     }
+
+    width() {
+        return this.canvas.width;
+    }
+
+    height() {
+        return this.canvas.height;
+    }
+    
+    getImageData() {
+        return this.context.getImageData(0, 0, this.width(), this.height());
+    }
+
+    putImageData(data) {
+        return this.context.putImageData(data, 0, 0);
+    }
 }

@@ -1,4 +1,4 @@
-function loadColours(pen) {
+function loadColours(artist) {
     const colours = ["#000000", "#ff0000", "#00ff00", "#0000ff"];
     const colourPalette = document.querySelector('.colour-palette');
     colours.forEach((colour) => {
@@ -7,7 +7,7 @@ function loadColours(pen) {
         circle.style.backgroundColor = colour;
 
         circle.addEventListener('click', () => {
-            pen.setColour(colour)
+            artist.setColour(colour)
             circle.classList.add("selected");
         });
         colourPalette.appendChild(circle);
@@ -18,38 +18,44 @@ window.onload = function() {
     const canvasHolder = document.querySelector('.canvas-holder');
     const fullCanvas = document.querySelector('.canvas.full');
     const tempCanvas = document.querySelector('.canvas.temp');
-    const pen = new Pen(fullCanvas, tempCanvas);
+    const artist = new Artist(fullCanvas, tempCanvas);
 
     canvasHolder.addEventListener('mousemove', function(e) {
         const [x, y] = relativeCoords(e.clientX, e.clientY);
-        pen.draw(x, y);
+        artist.move(x, y);
     });
     
     canvasHolder.addEventListener('mousedown', function(e) {
         const [x, y] = relativeCoords(e.clientX, e.clientY);
-        pen.penDown(x, y);
+        artist.start(x, y);
     });
     
     canvasHolder.addEventListener('mouseup', function() {
-        pen.penUp();
+        artist.end();
     });
     
     canvasHolder.addEventListener('touchstart', function(e) {
         const [x, y] = relativeCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
-        pen.penDown(x, y);
+        artist.start(x, y);
     });
     
     canvasHolder.addEventListener('touchend', function() {
-        pen.penUp();
+        artist.end();
     });
     
     canvasHolder.addEventListener('touchmove', function(e) {
         const [x, y] = relativeCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
         e.preventDefault();
-        pen.draw(x, y);
+        artist.move(x, y);
     });
 
-    colourPalette = new ColourPalette(pen);
+    canvasHolder.addEventListener('click', function(e) {
+        const [x, y] = relativeCoords(e.clientX, e.clientY);
+        e.preventDefault();
+        artist.click(x, y);
+    });
+
+    colourPalette = new ColourPalette(artist);
 
     [fullCanvas, tempCanvas].forEach(canvas => {
         canvas.setAttribute('height', canvasHolder.clientHeight - 4);
@@ -57,7 +63,7 @@ window.onload = function() {
     });
 
     document.getElementById('save-drawing').onclick = () => {
-        pen.save();
+        artist.save();
         document.location.replace('./gallery.html')
     }
 
