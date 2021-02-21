@@ -56,6 +56,7 @@ window.onload = function() {
     });
 
     colourPalette = new ColourPalette(artist);
+    tools = new Tools(artist);
 
     [fullCanvas, tempCanvas].forEach(canvas => {
         canvas.setAttribute('height', canvasHolder.clientHeight - 4);

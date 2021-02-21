@@ -2,7 +2,6 @@ class Artist {
   constructor(fullCanvas, tempCanvas) {
       this.fullCanvas = new Canvas(fullCanvas);
       this.tempCanvas = new Canvas(tempCanvas);
-      this.tool = new Bucket(this.fullCanvas, this.tempCanvas)
   }
   start(x, y) {
       if (this.tool.start) {
@@ -20,13 +19,19 @@ class Artist {
       }
   }
   setColour(colour) {
-      if (this.tool.setColour) {
+      if (this.tool && this.tool.setColour) {
         this.colour = colour;
         this.tool.setColour(colour);
       }
   }
+
+  setTool(toolName) {
+    this.tool = createTool(toolName, this.fullCanvas, this.tempCanvas, this.colour);
+  }
   click(x, y) {
-    this.tool.click(x,  y);
+    if (this.tool.click) {
+      this.tool.click(x,  y);
+    }
   }
   save() {
       localStorage.setItem('lastImage', this.fullCanvas.getDataUrl());

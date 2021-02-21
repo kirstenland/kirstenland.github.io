@@ -12,10 +12,13 @@ class Bucket {
     this.startR = this.colorLayer.data[(startY*canvasWidth + startX) * 4];
     this.startG = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 1];
     this.startB = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 2];
+    this.startO = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 3];
+    console.log(this.startR, this.startG, this.startB, this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 3]);
 
     this.fillColorR = 100;
     this.fillColorG = 0;
-    this.fillColorB  = 0;
+    this.fillColorB = 0;
+    this.fillColorO = 255;
 
     while(pixelStack.length)
     {
@@ -72,15 +75,16 @@ class Bucket {
     const r = this.colorLayer.data[pixelPos];	
     const g = this.colorLayer.data[pixelPos+1];	
     const b = this.colorLayer.data[pixelPos+2];
+    const o = this.colorLayer.data[pixelPos+3];
 
-    return (r == this.startR && g == this.startG && b == this.startB);
+    return (r == this.startR && g == this.startG && b == this.startB && o == this.startO);
   }
 
   colorPixel(pixelPos) {
     this.colorLayer.data[pixelPos] = this.fillColorR;
     this.colorLayer.data[pixelPos+1] = this.fillColorB;
     this.colorLayer.data[pixelPos+2] = this.fillColorG;
-    this.colorLayer.data[pixelPos+3] = 255;
+    this.colorLayer.data[pixelPos+3] = this.fillColorO;
   }
 }
 

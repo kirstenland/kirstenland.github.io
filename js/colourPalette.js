@@ -5,9 +5,9 @@ class ColourPalette {
     ];
     startingColour = "#000000"
 
-    constructor(pen) {
+    constructor(artist) {
         this.colourSelectors = {};
-        this.pen = pen;
+        this.artist = artist;
         this.colourPalette = document.querySelector('.colour-palette');
         this.colours.forEach(colour => this.createColour(colour));
         this.setColour(this.startingColour);
@@ -23,7 +23,7 @@ class ColourPalette {
     }
 
     setColour(colour) {
-        this.pen.setColour(colour);
+        this.artist.setColour(colour);
         Object.values(this.colourSelectors).forEach(circle => circle.classList.remove("selected"))
         this.colourSelectors[colour].classList.add("selected");
     }
