@@ -14,8 +14,9 @@ export class Tools {
     }
 
     createTool(name) {
-        const item = document.createElement('div');
-        item.innerHTML = name;
+        const item = document.createElement('span');
+        item.classList.add("dot");
+        item.style.backgroundImage = `url('resources/${name}.png')`;
         item.addEventListener('click', () => this.setTool(name));
         this.tools.appendChild(item);
         this.toolSelectors[name] = item;
