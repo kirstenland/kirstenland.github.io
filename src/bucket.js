@@ -1,4 +1,4 @@
-class Bucket {
+export class Bucket {
   constructor(fullCanvas, tempCanvas, colour) {
     this.fullCanvas = fullCanvas;
   }
@@ -13,7 +13,6 @@ class Bucket {
     this.startG = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 1];
     this.startB = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 2];
     this.startO = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 3];
-    console.log(this.startR, this.startG, this.startB, this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 3]);
 
     this.fillColorR = 100;
     this.fillColorG = 0;

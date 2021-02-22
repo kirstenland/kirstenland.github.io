@@ -1,13 +1,16 @@
-class Tools {
-    startingTool = "pen"
+import { Pen } from './pen';
+import { Bucket } from './bucket';
 
+const startingTool = "pen"
+
+export class Tools {
     constructor(artist) {
         this.toolSelectors = {};
         this.artist = artist;
         this.tools = document.querySelector('.tools');
         this.createTool("pen");
         this.createTool("bucket");
-        this.setTool(this.startingTool);
+        this.setTool(startingTool);
     }
 
     createTool(name) {
@@ -19,14 +22,13 @@ class Tools {
     }
 
     setTool(name) {
-        console.log("Selecting tool...", name);
         this.artist.setTool(name);
         Object.values(this.toolSelectors).forEach(item => item.classList.remove("selected"))
         this.toolSelectors[name].classList.add("selected");
     }
 }
 
-function createTool(toolName, fullCanvas, tempCanvas, color) {
+export function createTool(toolName, fullCanvas, tempCanvas, color) {
     switch (toolName) {
         case "pen":
             return new Pen(fullCanvas, tempCanvas, color);

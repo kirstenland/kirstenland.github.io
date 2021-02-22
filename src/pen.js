@@ -1,4 +1,4 @@
-class Pen {
+export class Pen {
     constructor(fullCanvas, tempCanvas, colour) {
         this.fullCanvas = fullCanvas;
         this.tempCanvas = tempCanvas;

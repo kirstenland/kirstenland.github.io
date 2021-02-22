@@ -1,4 +1,7 @@
-class Artist {
+import { Canvas } from './canvas';
+import { createTool } from './tools';
+
+export class Artist {
   constructor(fullCanvas, tempCanvas) {
       this.fullCanvas = new Canvas(fullCanvas);
       this.tempCanvas = new Canvas(tempCanvas);

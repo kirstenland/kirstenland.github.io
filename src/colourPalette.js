@@ -1,16 +1,17 @@
-class ColourPalette {
-    colours = [
-        "#000000", "#ff0000", "#00ff00", "#0000ff", "#ff9900", "#009933", "#9900cc",
-        "#66ccff", "#996633", "#ff33cc", "#ffff00", "#cc99ff"
-    ];
-    startingColour = "#000000"
+const colours = [
+    "#000000", "#ff0000", "#00ff00", "#0000ff", "#ff9900", "#009933", "#9900cc",
+    "#66ccff", "#996633", "#ff33cc", "#ffff00", "#cc99ff"
+];
+const startingColour = "#000000"
 
+
+export class ColourPalette {
     constructor(artist) {
         this.colourSelectors = {};
         this.artist = artist;
         this.colourPalette = document.querySelector('.colour-palette');
-        this.colours.forEach(colour => this.createColour(colour));
-        this.setColour(this.startingColour);
+        colours.forEach(colour => this.createColour(colour));
+        this.setColour(startingColour);
     }
 
     createColour(colour) {

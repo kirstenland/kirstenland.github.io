@@ -1,18 +1,6 @@
-function loadColours(artist) {
-    const colours = ["#000000", "#ff0000", "#00ff00", "#0000ff"];
-    const colourPalette = document.querySelector('.colour-palette');
-    colours.forEach((colour) => {
-        const circle = document.createElement('span');
-        circle.classList.add("dot");
-        circle.style.backgroundColor = colour;
-
-        circle.addEventListener('click', () => {
-            artist.setColour(colour)
-            circle.classList.add("selected");
-        });
-        colourPalette.appendChild(circle);
-    });
-}
+import { Tools } from './tools';
+import { ColourPalette } from './colourPalette';
+import { Artist } from './artist';
 
 window.onload = function() {
     const canvasHolder = document.querySelector('.canvas-holder');
@@ -55,8 +43,8 @@ window.onload = function() {
         artist.click(x, y);
     });
 
-    colourPalette = new ColourPalette(artist);
-    tools = new Tools(artist);
+    const colourPalette = new ColourPalette(artist);
+    const tools = new Tools(artist);
 
     [fullCanvas, tempCanvas].forEach(canvas => {
         canvas.setAttribute('height', canvasHolder.clientHeight - 4);
