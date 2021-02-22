@@ -1,5 +1,4 @@
 export function floodfill(layer, startX, startY, fillColour) {
-    console.log(layer.getColourAt(startX, startY));
     const canvasWidth = layer.width;
     const canvasHeight = layer.height;
     let pixelStack = [[startX, startY]];
@@ -13,7 +12,6 @@ export function floodfill(layer, startX, startY, fillColour) {
         while(y > 0 && matchStartColor(x, y - 1)) {
             y--;
         }
-        if (y > 0) console.log(matchStartColor(x, y - 1))
         let reachLeft = false;
         let reachRight = false;
         while(y < canvasHeight-1 && matchStartColor(x, y)) {
@@ -43,6 +41,5 @@ export function floodfill(layer, startX, startY, fillColour) {
             y++;
         }
     }
-    console.log(layer.getColourAt(startX, startY));
     return layer.layer;
 }

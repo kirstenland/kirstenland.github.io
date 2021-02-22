@@ -11,20 +11,20 @@ export class Pen {
         this.down = true;
         this.x = x;
         this.y = y;
-        this.points = [x, y];
+        this.points = [[x, y]];
     }
     end() {
         this.down = false;
         this.tempCanvas.clear();
         this.fullCanvas.setStrokeWidth(2);
-        this.fullCanvas.drawSpline(this.points, 0.2);
+        this.fullCanvas.drawLines(this.points);
     }
     move(newX, newY) {
         if (this.down) {
             this.tempCanvas.drawLine([this.x, this.y], [newX, newY]);
             this.x = newX;
             this.y = newY;
-            this.points = this.points.concat(newX, newY)
+            this.points.push([newX, newY]);
         }
     }
     setColour(colour) {
