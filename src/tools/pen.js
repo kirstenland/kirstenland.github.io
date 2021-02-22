@@ -1,7 +1,6 @@
 export class Pen {
-    constructor(fullCanvas, tempCanvas, colour) {
-        this.fullCanvas = fullCanvas;
-        this.tempCanvas = tempCanvas;
+    constructor(canvas, colour) {
+        this.canvas = canvas;
         this.down = false;
         if (colour) {
             this.setColour(colour);
@@ -11,24 +10,19 @@ export class Pen {
         this.down = true;
         this.x = x;
         this.y = y;
-        this.points = [[x, y]];
+        this.canvas.setStrokeWidth(2);
     }
     end() {
         this.down = false;
-        this.tempCanvas.clear();
-        this.fullCanvas.setStrokeWidth(2);
-        this.fullCanvas.drawLines(this.points);
     }
     move(newX, newY) {
         if (this.down) {
-            this.tempCanvas.drawLine([this.x, this.y], [newX, newY]);
+            this.canvas.drawLine([this.x, this.y], [newX, newY]);
             this.x = newX;
             this.y = newY;
-            this.points.push([newX, newY]);
         }
     }
     setColour(colour) {
-        this.fullCanvas.setColour(colour);
-        this.tempCanvas.setColour(colour);
+        this.canvas.setColour(colour);
     }
 }

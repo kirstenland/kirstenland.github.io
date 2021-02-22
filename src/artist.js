@@ -2,9 +2,8 @@ import { Canvas } from './canvas';
 import { createTool } from './controls/tools';
 
 export class Artist {
-    constructor(fullCanvas, tempCanvas) {
-        this.fullCanvas = new Canvas(fullCanvas);
-        this.tempCanvas = new Canvas(tempCanvas);
+    constructor(canvas) {
+        this.canvas = new Canvas(canvas);
     }
     start(x, y) {
         if (this.tool.start) {
@@ -28,7 +27,7 @@ export class Artist {
         }
     }
     setTool(toolName) {
-        this.tool = createTool(toolName, this.fullCanvas, this.tempCanvas, this.colour);
+        this.tool = createTool(toolName, this.canvas, this.colour);
     }
     click(x, y) {
         if (this.tool.click) {
@@ -36,10 +35,9 @@ export class Artist {
         }
     }
     save() {
-        localStorage.setItem('lastImage', this.fullCanvas.getDataUrl());
+        localStorage.setItem('lastImage', this.canvas.getDataUrl());
     }
     clear() {
-        this.fullCanvas.clear();
-        this.tempCanvas.clear();
+        this.canvas.clear();
     }
 }

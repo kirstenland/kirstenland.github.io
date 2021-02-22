@@ -4,9 +4,8 @@ import { Artist } from './artist';
 
 window.onload = function() {
     const canvasHolder = document.querySelector('.canvas-holder');
-    const fullCanvas = document.querySelector('.canvas.full');
-    const tempCanvas = document.querySelector('.canvas.temp');
-    const artist = new Artist(fullCanvas, tempCanvas);
+    const canvas = document.querySelector('.canvas');
+    const artist = new Artist(canvas);
 
     canvasHolder.addEventListener('mousemove', function(e) {
         const [x, y] = relativeCoords(e.clientX, e.clientY);
@@ -46,10 +45,8 @@ window.onload = function() {
     const colourPalette = new ColourPalette(artist);
     const tools = new Tools(artist);
 
-    [fullCanvas, tempCanvas].forEach(canvas => {
-        canvas.setAttribute('height', canvasHolder.clientHeight - 4);
-        canvas.setAttribute('width', canvasHolder.clientWidth - 4);
-    });
+    canvas.setAttribute('height', canvasHolder.clientHeight - 4);
+    canvas.setAttribute('width', canvasHolder.clientWidth - 4);
 
     document.getElementById('save-drawing').onclick = () => {
         artist.save();

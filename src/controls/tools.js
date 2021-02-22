@@ -1,5 +1,6 @@
 import { Pen } from '../tools/pen';
 import { Bucket } from '../tools/bucket';
+import { Eraser } from '../tools/eraser';
 
 const startingTool = "pen"
 
@@ -10,6 +11,7 @@ export class Tools {
         this.tools = document.querySelector('.tools');
         this.createTool("pen");
         this.createTool("bucket");
+        this.createTool("eraser");
         this.setTool(startingTool);
     }
 
@@ -29,11 +31,13 @@ export class Tools {
     }
 }
 
-export function createTool(toolName, fullCanvas, tempCanvas, color) {
+export function createTool(toolName, canvas, color) {
     switch (toolName) {
         case "pen":
-            return new Pen(fullCanvas, tempCanvas, color);
+            return new Pen(canvas, color);
         case "bucket":
-            return new Bucket(fullCanvas, tempCanvas, color);
+            return new Bucket(canvas, color);
+        case "eraser":
+            return new Eraser(canvas, color);
     }
 }

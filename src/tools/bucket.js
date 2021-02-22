@@ -3,15 +3,15 @@ import { Colour } from "./floodfill/colour";
 import { Layer } from "./floodfill/layer";
 
 export class Bucket {
-    constructor(fullCanvas, tempCanvas, colour) {
-        this.fullCanvas = fullCanvas;
+    constructor(canvas, colour) {
+        this.canvas = canvas;
         this.setColour(colour);
     }
   
     click(startX, startY) {
-        const layer = new Layer(this.fullCanvas);
+        const layer = new Layer(this.canvas);
         const newLayer = floodfill(layer, startX, startY, this.colour);
-        this.fullCanvas.putImageData(newLayer);
+        this.canvas.putImageData(newLayer);
     }
 
     setColour(colour) {

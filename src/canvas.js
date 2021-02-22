@@ -19,8 +19,17 @@ export class Canvas {
         }
     }
 
+    drawCircle([x, y], r) {
+        this.context.beginPath();
+        this.context.arc(x, y, r, 0, 2 * Math.PI);
+        this.context.fill();
+    }
+
     clear() {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.context.save();
+        this.setColour("#FFFFFF");
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.context.restore();
     }
 
     setStrokeWidth(width) {
@@ -29,6 +38,7 @@ export class Canvas {
 
     setColour(colour) {
         this.context.strokeStyle = colour;
+        this.context.fillStyle = colour;
     }
 
     getDataUrl() {
