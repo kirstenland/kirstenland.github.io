@@ -10,10 +10,7 @@ export class Bucket {
   
     click(startX, startY) {
         const layer = new Layer(this.fullCanvas);
-        console.log("Are you ready?");
         const newLayer = floodfill(layer, startX, startY, this.colour);
-        console.log("EXCITING");
-        console.log(newLayer);
         this.fullCanvas.putImageData(newLayer);
     }
 
