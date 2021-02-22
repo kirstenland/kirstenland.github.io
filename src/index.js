@@ -1,5 +1,5 @@
-import { Tools } from './tools';
-import { ColourPalette } from './colourPalette';
+import { Tools } from './controls/tools';
+import { ColourPalette } from './controls/colourPalette';
 import { Artist } from './artist';
 
 window.onload = function() {

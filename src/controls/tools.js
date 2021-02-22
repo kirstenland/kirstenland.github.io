@@ -1,5 +1,5 @@
-import { Pen } from './pen';
-import { Bucket } from './bucket';
+import { Pen } from '../tools/pen';
+import { Bucket } from '../tools/bucket';
 
 const startingTool = "pen"
 

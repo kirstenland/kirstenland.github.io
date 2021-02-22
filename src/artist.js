@@ -1,5 +1,5 @@
 import { Canvas } from './canvas';
-import { createTool } from './tools';
+import { createTool } from './controls/tools';
 
 export class Artist {
   constructor(fullCanvas, tempCanvas) {
