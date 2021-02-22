@@ -1,89 +1,31 @@
+import { floodfill } from "./floodfill/floodfill";
+import { Colour } from "./floodfill/colour";
+import { Layer } from "./floodfill/layer";
+
 export class Bucket {
-  constructor(fullCanvas, tempCanvas, colour) {
-    this.fullCanvas = fullCanvas;
-  }
-
-  click(startX, startY) {
-    this.colorLayer = this.fullCanvas.getImageData();
-    const canvasWidth = this.fullCanvas.width();
-    const canvasHeight = this.fullCanvas.height();
-    let pixelStack = [[startX, startY]];
-    
-    this.startR = this.colorLayer.data[(startY*canvasWidth + startX) * 4];
-    this.startG = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 1];
-    this.startB = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 2];
-    this.startO = this.colorLayer.data[(startY*canvasWidth + startX) * 4 + 3];
-
-    this.fillColorR = 100;
-    this.fillColorG = 0;
-    this.fillColorB = 0;
-    this.fillColorO = 255;
-
-    while(pixelStack.length)
-    {
-      let [x,  y] = pixelStack.pop();
-      let pixelPos = (y*canvasWidth + x) * 4;
-      while(y-- >= 0 && this.matchStartColor(pixelPos)) {
-        pixelPos -= canvasWidth * 4;
-      }
-      pixelPos += canvasWidth * 4;
-      ++y;
-      let reachLeft = false;
-      let reachRight = false;
-      while(y++ < canvasHeight-1 && this.matchStartColor(pixelPos)) {
-        this.colorPixel(pixelPos);
-
-        if(x > 0)
-        {
-          if(this.matchStartColor(pixelPos - 4))
-          {
-            if(!reachLeft){
-              pixelStack.push([x - 1, y]);
-              reachLeft = true;
-            }
-          }
-          else if(reachLeft)
-          {
-            reachLeft = false;
-          }
-        }
-      
-        if(x < canvasWidth-1)
-        {
-          if(this.matchStartColor(pixelPos + 4))
-          {
-            if(!reachRight)
-            {
-              pixelStack.push([x + 1, y]);
-              reachRight = true;
-            }
-          }
-          else if(reachRight)
-          {
-            reachRight = false;
-          }
-        }
-          
-        pixelPos += canvasWidth * 4;
-      }
+    constructor(fullCanvas, tempCanvas, colour) {
+        this.fullCanvas = fullCanvas;
+        this.setColour(colour);
     }
-    this.fullCanvas.putImageData(this.colorLayer);
-  }
+  
+    click(startX, startY) {
+        const layer = new Layer(this.fullCanvas);
+        console.log("Are you ready?");
+        const newLayer = floodfill(layer, startX, startY, this.colour);
+        console.log("EXCITING");
+        console.log(newLayer);
+        this.fullCanvas.putImageData(newLayer);
+    }
 
-  matchStartColor(pixelPos) {
-    const r = this.colorLayer.data[pixelPos];	
-    const g = this.colorLayer.data[pixelPos+1];	
-    const b = this.colorLayer.data[pixelPos+2];
-    const o = this.colorLayer.data[pixelPos+3];
-
-    return (r == this.startR && g == this.startG && b == this.startB && o == this.startO);
-  }
-
-  colorPixel(pixelPos) {
-    this.colorLayer.data[pixelPos] = this.fillColorR;
-    this.colorLayer.data[pixelPos+1] = this.fillColorB;
-    this.colorLayer.data[pixelPos+2] = this.fillColorG;
-    this.colorLayer.data[pixelPos+3] = this.fillColorO;
-  }
+    setColour(colour) {
+        const [r, g, b] = hexToRGB(colour);
+        this.colour = new Colour(r, g, b, 255);
+    }
 }
 
+function hexToRGB(h) {
+    const r = "0x" + h[1] + h[2];
+    const g = "0x" + h[3] + h[4];
+    const b = "0x" + h[5] + h[6];
+    return [+r, +g, +b];
+}
