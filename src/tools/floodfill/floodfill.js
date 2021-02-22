@@ -10,11 +10,13 @@ export function floodfill(layer, startX, startY, fillColour) {
 
     while(pixelStack.length) {
         let [x,  y] = pixelStack.pop();
-        while(y-- >= 0 && matchStartColor(x, y)) {}
-        y++;
+        while(y > 0 && matchStartColor(x, y - 1)) {
+            y--;
+        }
+        if (y > 0) console.log(matchStartColor(x, y - 1))
         let reachLeft = false;
         let reachRight = false;
-        while(y++ < canvasHeight-1 && matchStartColor(x, y)) {
+        while(y < canvasHeight-1 && matchStartColor(x, y)) {
             layer.colorPixel(x, y, fillColour);
 
             if(x > 0) {
@@ -38,7 +40,7 @@ export function floodfill(layer, startX, startY, fillColour) {
                     reachRight = false;
                 }
             }
-            
+            y++;
         }
     }
     console.log(layer.getColourAt(startX, startY));
