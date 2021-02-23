@@ -8,21 +8,21 @@ export class Pen {
     }
     start(x, y) {
         this.down = true;
-        this.x = x;
-        this.y = y;
-        this.canvas.setStrokeWidth(2);
+        this.canvas.startLine([x, y]);
     }
     end() {
         this.down = false;
+        this.canvas.endLine();
     }
-    move(newX, newY) {
+    move(x, y) {
         if (this.down) {
-            this.canvas.drawLine([this.x, this.y], [newX, newY]);
-            this.x = newX;
-            this.y = newY;
+            this.canvas.midLine([x, y]);
         }
     }
     setColour(colour) {
         this.canvas.setColour(colour);
+    }
+    setStrokeSize(size) {
+        this.canvas.setStrokeWidth(size);
     }
 }

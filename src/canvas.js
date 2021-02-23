@@ -4,19 +4,18 @@ export class Canvas {
         this.context = canvas.getContext("2d");
     }
 
-    drawLine([x, y], [newX, newY]) {
+    startLine([x, y]) {
         this.context.beginPath();
         this.context.moveTo(x, y);
-        this.context.lineTo(newX, newY);
-        this.context.stroke();
+    }
+
+    endLine() {
         this.context.closePath();
     }
 
-    drawLines(points) {
-        const n = points.length;
-        for(let i = 0; i < n - 1; i++){
-            this.drawLine(points[i], points[i + 1])
-        }
+    midLine([x, y]) {
+        this.context.lineTo(x, y);
+        this.context.stroke();
     }
 
     drawCircle([x, y], r) {

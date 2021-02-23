@@ -26,6 +26,12 @@ export class Artist {
             this.tool.setColour(colour);
         }
     }
+    setStrokeSize(strokeSize) {
+        this.strokeSize = strokeSize;
+        if (this.tool && this.tool.setStrokeSize) {
+            this.tool.setStrokeSize(strokeSize);
+        }
+    }
     setTool(toolName) {
         this.tool = createTool(toolName, this.canvas, this.colour);
     }

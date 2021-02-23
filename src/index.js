@@ -1,5 +1,6 @@
 import { Tools } from './controls/tools';
 import { ColourPalette } from './controls/colourPalette';
+import { StrokeSizes } from './controls/strokeSizes';
 import { Artist } from './artist';
 
 window.onload = function() {
@@ -44,6 +45,7 @@ window.onload = function() {
 
     const colourPalette = new ColourPalette(artist);
     const tools = new Tools(artist);
+    const strokeSizes = new StrokeSizes(artist);
 
     canvas.setAttribute('height', canvasHolder.clientHeight - 4);
     canvas.setAttribute('width', canvasHolder.clientWidth - 4);

@@ -16,6 +16,7 @@ export class ColourPalette {
 
     createColour(colour) {
         const circle = document.createElement('span');
+        circle.classList.add("selectable");
         circle.classList.add("dot");
         circle.style.backgroundColor = colour;
         circle.addEventListener('click', () => this.setColour(colour));
