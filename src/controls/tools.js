@@ -32,13 +32,13 @@ export class Tools {
     }
 }
 
-export function createTool(toolName, canvas, color) {
+export function createTool(toolName, ...args) {
     switch (toolName) {
         case "pen":
-            return new Pen(canvas, color);
+            return new Pen(...args);
         case "bucket":
-            return new Bucket(canvas, color);
+            return new Bucket(...args);
         case "eraser":
-            return new Eraser(canvas, color);
+            return new Eraser(...args);
     }
 }

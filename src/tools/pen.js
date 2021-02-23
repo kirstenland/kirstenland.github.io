@@ -1,9 +1,12 @@
 export class Pen {
-    constructor(canvas, colour) {
+    constructor(canvas, colour, strokeSize) {
         this.canvas = canvas;
         this.down = false;
         if (colour) {
             this.setColour(colour);
+        }
+        if (strokeSize) {
+            this.setStrokeSize(strokeSize);
         }
     }
     start(x, y) {

@@ -33,7 +33,7 @@ export class Artist {
         }
     }
     setTool(toolName) {
-        this.tool = createTool(toolName, this.canvas, this.colour);
+        this.tool = createTool(toolName, this.canvas, this.colour, this.strokeSize);
     }
     click(x, y) {
         if (this.tool.click) {
