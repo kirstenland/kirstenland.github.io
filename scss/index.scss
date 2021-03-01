@@ -59,6 +59,10 @@ main {
     border: 2px solid white;
 }
 
+.selectable {
+    cursor: pointer;
+}
+
 .dot.selected {
     border: 2px solid grey;
 }
