@@ -4,6 +4,12 @@ import { Eraser } from '../tools/eraser';
 
 const startingTool = "pen"
 
+const settingsRequired = {
+    pen: ["colour-palette", "stroke-sizes"],
+    eraser: ["stroke-sizes"],
+    bucket: ["colour-palette"],
+};
+
 export class Tools {
     constructor(artist) {
         this.toolSelectors = {};
@@ -29,6 +35,15 @@ export class Tools {
         this.artist.setTool(name);
         Object.values(this.toolSelectors).forEach(item => item.classList.remove("selected"))
         this.toolSelectors[name].classList.add("selected");
+
+        const settings = document.getElementsByClassName('setting');
+        for (const item of settings) {
+            if (settingsRequired[name].indexOf(item.id) >= 0) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        }
     }
 }
 

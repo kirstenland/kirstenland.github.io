@@ -70,6 +70,7 @@ body {
 .toolbar {
   border: 2px solid black;
   max-width: 140px;
+  position: relative;
 }
 
 html {
@@ -124,9 +125,9 @@ main {
 }
 
 #save-drawing {
-  margin: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 10px;
+  width: 80%;
+  height: 60px;
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -136,15 +137,19 @@ main {
   font-size: 16px;
   outline: none;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 #save-drawing:active {
   border: 1px solid black;
 }
 
-.button-holder {
+.save-button-holder {
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */
