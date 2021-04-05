@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Flood Forecasting Puzzle</title>
+        <link rel="stylesheet" href="css/puzzle.css"></link>
+    </head>
+    <body>
+        <main>
+            <h1>Flood Forecasting Puzzle Hunt!</h1>
+
+            <p>
+                Alice has returned to Wonderland. After her last visit, when she cried a river of tears and left Wonderland flooded for days with no warning at all, the flood forecasters of Wonderland are quite concerned. Fortunately, they have a system of detectors set up to work out where the flooding is likely to occur. Unfortunately, this system is quite complex. Can you help them to create the forecast? And after Alice’s visit, how will they know if their forecasting was correct?
+            </p>
+            <p>
+                Wonderland is split into 16 cells which each need to be assigned a risk level – Green, Yellow, Amber or Red. Magic forecasting devices have been placed in some of the cells and the numbers they have recorded are written in the grid below. Each forecasting device turns the risk levels into numbers (see the key for more info) and returns the sum of the risk levels from that cell and all adjacent cells (that is, cells that share an edge). Once you are done, read the answer from the red cells and enter to get your puzzle hunt link. 
+            </p>
+
+
+
+            <div class="puzzle-info">
+                <div class="puzzle-table">
+                    <table>
+                        <tbody id="to-insert-rows">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="other-info">
+                    <p>
+                        The grid to the left is interactive! Click on any cell to change its risk level.
+                    </p>
+                    <hr />
+                    <div class="key">
+                        <h3>Key</h3>
+                        <ul>
+                            <li><span class="green square"></span>0: Green</li>
+                            <li><span class="yellow square"></span>1: Yellow</li>
+                            <li><span class="amber square"></span>2: Amber</li>
+                            <li><span class="red square"></span>3: Red</li>
+                        </ul>
+                    </div>
+                    <hr />
+                    <div>
+                        <h3>Check your answer!</h3>
+                        <form id="check-answer">
+                            <div class="input-row">
+                                <input type="text" for="answer"></input>
+                                <button>Check</button>
+                            </div>
+                            <p id="feedback"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="src/puzzle.js"></script>
+    </body>
+</html>
