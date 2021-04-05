@@ -66,7 +66,6 @@ const giveFeedback = (feedback, isCorrect) => {
     }
 }
 
-console.log(document.getElementById('check-answer'))
 document.getElementById('check-answer').addEventListener('submit', (event) => handleSubmit(event))
 
 const showSecrets = (chosenSelector) => {
